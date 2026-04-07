@@ -1,0 +1,7 @@
+{
+  "name": "JurisVoice AI",
+  "description": "Assistant vocal juridique intelligent avec analyse de documents PDF et conformité réglementaire (RGPD, AI Act, Loi 09-08).",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
