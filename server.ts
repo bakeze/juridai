@@ -4,10 +4,25 @@ import path from "path";
 import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 
-dotenv.config();
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// Charger les variables d'environnement depuis .env.local
+const envPath = path.join(__dirname, '.env.local');
+console.log('📂 Searching for .env.local at:', envPath);
+
+const envResult = dotenv.config({ path: envPath });
+if (envResult.error) {
+  console.warn('⚠️ Warning loading .env.local:', envResult.error.message);
+} else {
+  console.log('✅ .env.local loaded successfully');
+}
+
+console.log('✅ Variables d\'environnement chargées');
+console.log('📦 ELEVENLABS_API_KEY:', process.env.ELEVENLABS_API_KEY ? '✓ Configurée' : '✗ Non configurée');
+if (process.env.ELEVENLABS_API_KEY) {
+  console.log('   Préfixe:', process.env.ELEVENLABS_API_KEY.substring(0, 15) + '...');
+}
 
 async function startServer() {
   const app = express();
@@ -15,12 +30,26 @@ async function startServer() {
 
   app.use(express.json());
 
+  // Debug endpoint to check configuration
+  app.get("/api/health", (req, res) => {
+    console.log('🔍 Health check - ELEVENLABS_API_KEY:', process.env.ELEVENLABS_API_KEY ? '✓' : '✗');
+    res.json({
+      status: 'ok',
+      elevenlabsConfigured: !!process.env.ELEVENLABS_API_KEY,
+      elevenlabsKeyPreview: process.env.ELEVENLABS_API_KEY ? process.env.ELEVENLABS_API_KEY.substring(0, 10) + '...' : null,
+    });
+  });
+
   // API Routes
   app.post("/api/tts/elevenlabs", async (req, res) => {
     const { text, voiceId } = req.body;
     const apiKey = process.env.ELEVENLABS_API_KEY;
 
+    console.log('📤 TTS Request - apiKey present:', !!apiKey, 'text length:', text?.length);
+
     if (!apiKey) {
+      console.error('❌ ELEVENLABS_API_KEY is undefined!');
+      console.error('Available env vars:', Object.keys(process.env).filter(k => k.includes('ELEVEN')));
       return res.status(500).json({ error: "ELEVENLABS_API_KEY not configured on server" });
     }
 

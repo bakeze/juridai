@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { FileText, Upload, Shield, Scale, Mic, MessageSquare, CheckCircle2, AlertCircle, Loader2, Settings, Trash2, Plus } from 'lucide-react';
 import { extractTextFromPdf } from './services/pdf';
-import { VoiceAssistant } from './components/VoiceAssistant';
+import { VoiceAssistantLive } from './components/VoiceAssistantLive';
 import { Chat } from './components/Chat';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -267,7 +267,7 @@ export default function App() {
                     exit={{ opacity: 0, x: -20 }}
                     className="flex flex-col items-center justify-center py-12"
                   >
-                    <VoiceAssistant context={combinedContext} />
+                    <VoiceAssistantLive documentContext={combinedContext} />
                   </motion.div>
                 )}
               </AnimatePresence>
