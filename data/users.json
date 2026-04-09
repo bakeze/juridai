@@ -1,0 +1,32 @@
+[
+  {
+    "id": "u1",
+    "username": "admin",
+    "passwordHash": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+    "role": "admin",
+    "name": "Administrateur Système",
+    "email": "admin@jurisvoice.ai",
+    "permissions": ["read", "write", "admin", "audit"],
+    "comment": "Mot de passe par défaut: admin — À CHANGER EN PRODUCTION"
+  },
+  {
+    "id": "u2",
+    "username": "alice",
+    "passwordHash": "4e40e8ffe0ee32fa53e139147ed559229a5930f89c2204706fc174beb36210b3",
+    "role": "compliance_officer",
+    "name": "Alice Dupont",
+    "email": "alice@company.com",
+    "permissions": ["read", "write", "audit"],
+    "comment": "Mot de passe par défaut: alice123"
+  },
+  {
+    "id": "u3",
+    "username": "bob",
+    "passwordHash": "8d059c3640b97180dd2ee453e20d34ab0cb0f2eccbe87d01915a8e578a202b11",
+    "role": "legal_analyst",
+    "name": "Bob Martin",
+    "email": "bob@company.com",
+    "permissions": ["read", "write"],
+    "comment": "Mot de passe par défaut: bob123"
+  }
+]
