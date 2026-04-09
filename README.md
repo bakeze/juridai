@@ -62,8 +62,6 @@ Application disponible sur **http://localhost:3000**
 | `GEMINI_API_KEY` | ✅ | Clé API Google AI Studio |
 | `VITE_GEMINI_API_KEY` | ✅ | Même clé, exposée au frontend (assistant vocal) |
 | `JWT_SECRET` | ✅ | Secret JWT (min. 32 caractères) |
-| `ELEVENLABS_API_KEY` | ❌ | Clé ElevenLabs pour la synthèse vocale |
-| `ELEVENLABS_VOICE_ID` | ❌ | ID de voix ElevenLabs |
 
 ---
 
