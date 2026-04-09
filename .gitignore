@@ -9,3 +9,7 @@ coverage/
 rag/index/
 audit/
 !audit/.gitkeep
+legal-references/
+legal-db-cache.json
+*.pdf
+*.csv
